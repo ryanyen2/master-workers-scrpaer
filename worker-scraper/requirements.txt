@@ -1,0 +1,7 @@
+selenium~=3.141.0
+pandas
+python-dotenv~=0.15.0
+urllib3==1.26.2
+mysql-connector-python
+googletrans
+chromedriver-autoinstaller

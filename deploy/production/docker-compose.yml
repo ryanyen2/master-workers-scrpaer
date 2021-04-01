@@ -1,0 +1,26 @@
+version: '3'
+services:
+  master_app:
+    build: .
+    environment:
+      - APP_ENV=production
+    networks:
+      - backend-network
+  worker_app1:
+  worker_app2:
+  redis:
+  db:
+    image: gcr.io/cloudsql-docker/gce-proxy:1.19.1
+    volumes:
+      - ./credentials/cloudSql.json:/config/cloudSql.json:ro
+    ports:
+      - "3000:3306"
+    networks:
+      - backend-network
+    command: >
+      /cloud_sql_proxy
+      -instances=INSTANCE_CONNECTION_NAME
+      -credential_file=/config/cloudSql.json
+
+networks:
+  backend-network:

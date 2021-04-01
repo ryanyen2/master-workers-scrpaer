@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./deploy/development/Dockerfile
+    networks:
+      - backend-network
+    environment:
+      - APP_ENV=development
+  db:
+    image: mysql:8
+    ports:
+      - '3000:3306'
+    expose:
+      - '3306'
+    networks:
+      - backend-network
+    volumes:
+      - ./db-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_USER=root
+
+volumes:
+  db-data:
+networks:
+  backend-network:
