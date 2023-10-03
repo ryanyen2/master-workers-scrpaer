@@ -1,6 +1,6 @@
 selenium~=3.141.0
 python-dotenv~=0.15.0
-urllib3==1.26.5
+urllib3==1.26.17
 mysql-connector-python~=8.0.23
 chromedriver-autoinstaller
 docker~=4.4.4
